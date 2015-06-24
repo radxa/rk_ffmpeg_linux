@@ -2348,6 +2348,32 @@ wmv3_vaapi_hwaccel_select="vc1_vaapi_hwaccel"
 wmv3_vdpau_decoder_select="vc1_vdpau_decoder"
 wmv3_vdpau_hwaccel_select="vc1_vdpau_hwaccel"
 
+# add by zj
+mpeg1_rkvpu_decoder_deps="rkvpu"
+mpeg1_rkvpu_decoder_select="mpeg1video_decoder"
+mpeg2_rkvpu_decoder_deps="rkvpu"
+mpeg2_rkvpu_decoder_select="mpeg2video_decoder"
+mpeg4_rkvpu_decoder_deps="rkvpu"
+mpeg4_rkvpu_decoder_select="mpeg4_decoder"
+flv_rkvpu_decoder_deps="rkvpu"
+flv_rkvpu_decoder_select="flv_decoder"
+h264_rkvpu_decoder_deps="rkvpu"
+h264_rkvpu_decoder_select="h264_decoder"
+h264_rkvpu_decoder_deps="rkvpu"
+h264_rkvpu_decoder_select="hevc_decoder"
+rv30_rkvpu_decoder_deps="rkvpu"
+rv30_rkvpu_decoder_select="rv30_decoder"
+rv40_rkvpu_decoder_deps="rkvpu"
+rv40_rkvpu_decoder_select="rv40_decoder"
+vc1_rkvpu_decoder_deps="rkvpu"
+vc1_rkvpu_decoder_select="vc1_decoder"
+wmv3_rkvpu_decoder_deps="rkvpu"
+wmv3_rkvpu_decoder_select="wmv3_decoder"
+vp8_rkvpu_decoder_deps="rkvpu"
+vp8_rkvpu_decoder_select="vp8_decoder"
+msmpeg4v3_rkvpu_decoder_deps="rkvpu"
+msmpeg4v3_rkvpu_decoder_select="msmpeg4v3_decoder"
+
 # parsers
 h264_parser_select="h264_decoder"
 hevc_parser_select="hevc_decoder"
@@ -2719,11 +2745,11 @@ ln_s="ln -s -f"
 nm_default="nm -g"
 objformat="elf"
 pkg_config_default=pkg-config
-if ranlib 2>&1 | grep -q "\-D "; then
-    ranlib_default="ranlib -D"
-else
+#if ranlib 2>&1 | grep -q "\-D "; then
+#    ranlib_default="ranlib -D"
+#else
     ranlib_default="ranlib"
-fi
+#fi
 strip_default="strip"
 yasmexe_default="yasm"
 windres_default="windres"
@@ -2763,7 +2789,7 @@ sws_max_filter_size_default=256
 set_default sws_max_filter_size
 
 # Enable hwaccels by default.
-enable dxva2 vaapi vda vdpau xvmc
+enable dxva2 vaapi vda vdpau xvmc rkvpu
 enable xlib
 
 # build settings

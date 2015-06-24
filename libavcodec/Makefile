@@ -36,6 +36,9 @@ OBJS = allcodecs.o                                                      \
        vorbis_parser.o                                                  \
        xiph.o                                                           \
 
+# add by zj
+OBJS += rkdec_decoder.o
+
 # subsystems
 OBJS-$(CONFIG_AANDCTTABLES)            += aandcttab.o
 OBJS-$(CONFIG_AC3DSP)                  += ac3dsp.o
