@@ -20,6 +20,7 @@
 *-example
 *-test
 *_g
+!prebuild/libs/*
 /.config
 /.version
 /ffmpeg
