@@ -1,0 +1,19 @@
+
+Build:
+
+./linux_generate.sh
+
+copy ./out to target board
+
+
+on target board:
+
+   su root
+   export LD_LIBRARY_PATH=/usr/local/lib
+
+   cp -rf out/usr/* /usr/
+   rm /usr/local/lib/libvpu*
+
+   service lightdm stop //kill the process who use the libdrm.
+
+   ffmpegexample test.mp4
