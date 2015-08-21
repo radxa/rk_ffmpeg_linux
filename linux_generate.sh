@@ -49,7 +49,8 @@ FFMPEG_FLAGS="--prefix=/usr/local \
 
 ./configure $FFMPEG_FLAGS --extra-cflags="$CFLAGS $EXTRA_CFLAGS" --extra-ldflags="$LDFLAGS $EXTRA_LDFLAGS"
 
-make -j8 && make DESTDIR=out install
-
+make -j8 && \
+rm -rf out && mkdir -p out/usr/lib && \
+make DESTDIR=out install
 cp -rf ./prebuild/include/* out/usr/local/include
-cp -rf ./prebuild/libs/* out/usr/local/lib
+cp -rf ./prebuild/libs/* out/usr/lib
