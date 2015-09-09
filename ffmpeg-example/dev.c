@@ -33,6 +33,17 @@ static uint32_t get_prop_id(struct sp_dev *dev,
 }
 #endif
 
+int is_supported_format(struct sp_plane *plane, uint32_t format)
+{
+	uint32_t i;
+
+	for (i = 0; i < plane->plane->count_formats; i++) {
+		if (plane->plane->formats[i] == format)
+			return 1;
+	}
+	return 0;
+}
+
 static int get_supported_format(struct sp_plane *plane, uint32_t *format)
 {
 	uint32_t i;
@@ -76,12 +87,12 @@ struct sp_dev *create_sp_dev(void)
 		printf("failed to set client cap atomic\n");
 		goto err;
 	}
-#endif
 	ret = drmSetClientCap(dev->fd, DRM_CLIENT_CAP_UNIVERSAL_PLANES, 1);
 	if (ret) {
 		printf("failed to set client cap\n");
 		goto err;
 	}
+#endif
 
 	r = drmModeGetResources(dev->fd);
 	if (!r) {

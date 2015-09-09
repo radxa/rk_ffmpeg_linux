@@ -99,10 +99,11 @@ int main(int argc, const char *argv[])
 	num_test_planes = test_crtc->num_planes;
 	for (i = 0; i < test_crtc->num_planes; i++) {
 		plane[i] = get_sp_plane(dev, test_crtc);
+		if (is_supported_format(plane[i], DRM_FORMAT_NV12))
+			test_plane = plane[i];
 	}
-	test_plane = plane[2];
-
-	//fill_bo(test_plane->bo, 0xff, 0x00, 0xff, 0xff);
+	if (!test_plane)
+		return -1;
 
 	av_register_all();  
 	if(avformat_open_input(&pFormatCtx, argv[1], NULL, NULL) != 0) {  
@@ -166,7 +167,7 @@ int main(int argc, const char *argv[])
 				pitches[0] = wAlign16;
 				offsets[0] = 0;
 				handles[1] = bo->handle;
-				pitches[1] = wAlign16 * 2;
+				pitches[1] = wAlign16;
 				offsets[1] = wAlign16 * hAlign16;
 				ret = drmModeAddFB2(bo->dev->fd, bo->width, bo->height,
 						bo->format, handles, pitches, offsets,

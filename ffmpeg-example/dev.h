@@ -51,6 +51,7 @@ struct sp_dev {
 	struct sp_plane *planes;
 };
 
+int is_supported_format(struct sp_plane *plane, uint32_t format);
 struct sp_dev *create_sp_dev(void);
 void destroy_sp_dev(struct sp_dev *dev);
 

@@ -101,6 +101,8 @@ struct sp_bo *create_sp_bo(struct sp_dev *dev, uint32_t width, uint32_t height,
 	struct drm_mode_create_dumb cd;
 	struct sp_bo *bo;
 
+	memset(&cd, 0, sizeof(cd));
+
 	bo = calloc(1, sizeof(*bo));
 	if (!bo)
 		return NULL;
