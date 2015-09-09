@@ -6,7 +6,7 @@ C_OBJ = $(patsubst %c, %o, $(C_SRC))
 .PHONY:all clean
 all: ffmpegexample
 %o: %c
-	$(CC) $(CFLAGS) -o $@ $< 
+	$(CC) $(CFLAGS) -c $< 
 ffmpegexample:$(C_OBJ)
 	$(CC) -o $@ $^ $(LIBS) $(LDFLAGS) 
 clean:
